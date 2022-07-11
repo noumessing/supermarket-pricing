@@ -49,3 +49,15 @@ alter table CONDITIONNEMENTPRODUIT add constraint FK_ASSOCIATION_2 foreign key (
 
 alter table CONDPRODUITSAVE add constraint FK_ASSOCIATION_3 foreign key (IDCP)
       references CONDITIONNEMENTPRODUIT (IDCP) on delete restrict on update restrict;
+
+alter table CONDITIONNEMENTPRODUIT add column QUANTITEPOURBONUS int default 0;
+
+alter table CONDITIONNEMENTPRODUIT add column QUANTITEBONIFIEE int default 0;
+
+
+alter table CONDPRODUITSAVE add column QUANTITEPOURBONUS int default 0;
+
+alter table CONDPRODUITSAVE add column QUANTITEBONIFIEE int default 0;
+	  
+	  
+	  

@@ -11,6 +11,7 @@ public class ConditionnementProduitSave {
 	private BigDecimal prix;
 	private Date dateEffective;  // Date de tarification du produit
 	private Date dateFinEffective;  // Date de modification de cette tarification
-	
+	private int quantitePourBonus;
+	private int quantiteBonifiee;
 
 }

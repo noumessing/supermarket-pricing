@@ -9,8 +9,6 @@ public class Produit {
 	public Produit() {
 		super();
 	}
-
-
 	
 
 	public Produit(long id, String nomProduit) {

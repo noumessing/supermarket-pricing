@@ -12,19 +12,47 @@ public class ConditionnementProduit {
 	private int quantite; // Pour la plupart des produits çà devrait être 1
 	private BigDecimal prix;
 	private Date dateEffective;  // Date de tarification du produit
-	
+	private int quantitePourBonus;
+	private int quantiteBonifiee;
 	
 	public ConditionnementProduit() {
 	
 	}
-	public ConditionnementProduit(Produit produit, Conditionnement conditionnement, int quantite, BigDecimal prix,
-			Date dateEffective) {
 	
+	public ConditionnementProduit(int quantite, BigDecimal prix, Date dateEffective, int quantitePourBonus,
+			int quantiteBonifiee) {
+		super();
+		this.quantite = quantite;
+		this.prix = prix;
+		this.dateEffective = dateEffective;
+		this.quantitePourBonus = quantitePourBonus;
+		this.quantiteBonifiee = quantiteBonifiee;
+	}
+	
+	
+
+	public ConditionnementProduit(Conditionnement conditionnement, int quantite, BigDecimal prix, Date dateEffective,
+			int quantitePourBonus, int quantiteBonifiee) {
+		super();
+		this.conditionnement = conditionnement;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.dateEffective = dateEffective;
+		this.quantitePourBonus = quantitePourBonus;
+		this.quantiteBonifiee = quantiteBonifiee;
+	}
+
+
+	public ConditionnementProduit(Produit produit, Conditionnement conditionnement, int quantite, BigDecimal prix,
+			Date dateEffective, int quantitePourBonus, int quantiteBonifiee) {
+		
 		this.produit = produit;
 		this.conditionnement = conditionnement;
 		this.quantite = quantite;
 		this.prix = prix;
 		this.dateEffective = dateEffective;
+		this.quantitePourBonus = quantitePourBonus;
+		this.quantiteBonifiee = quantiteBonifiee;
 	}
 	
 	
@@ -59,6 +87,18 @@ public class ConditionnementProduit {
 		this.dateEffective = dateEffective;
 	}
 
+	public int getQuantitePourBonus() {
+		return quantitePourBonus;
+	}
+	public void setQuantitePourBonus(int quantitePourBonus) {
+		this.quantitePourBonus = quantitePourBonus;
+	}
+	public int getQuantiteBonifiee() {
+		return quantiteBonifiee;
+	}
+	public void setQuantiteBonifiee(int quantiteBonifiee) {
+		this.quantiteBonifiee = quantiteBonifiee;
+	}
 	
 
 

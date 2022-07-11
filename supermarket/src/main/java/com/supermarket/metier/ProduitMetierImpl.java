@@ -22,7 +22,7 @@ public class ProduitMetierImpl implements ProduitMetier {
 	}
 
 	public void saveProduit(Produit p) {
-		// TODO Auto-generated method stub
+		
 		produitDao.insertProduit(p);
 	}
 
@@ -32,7 +32,7 @@ public class ProduitMetierImpl implements ProduitMetier {
 	}
 
 	public Produit findById(long id) {
-		// TODO Auto-generated method stub
+		
 		return produitDao.findProduit(id);
 	}
 
@@ -40,5 +40,12 @@ public class ProduitMetierImpl implements ProduitMetier {
 		
 		return produitDao.nombreProduit();
 	}
+	
+	@Override
+	public boolean modifierProduit(Produit p) {
+		
+		return produitDao.updateProduit(p);
+	}
+
 
 }
