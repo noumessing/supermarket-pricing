@@ -7,6 +7,7 @@ import java.util.Date;
 //on peut dire: une baguette de pain vaut 2$, 5 baril de petrole valent 3$, 3 kg de lait coutent 2$. Po  
 public class ConditionnementProduit {
 	
+	private long idcp;
 	private Produit produit;
 	private Conditionnement conditionnement;
 	private int quantite; // Pour la plupart des produits çà devrait être 1
@@ -19,6 +20,23 @@ public class ConditionnementProduit {
 	
 	}
 	
+	
+	
+	public ConditionnementProduit(long idcp, Produit produit, Conditionnement conditionnement, int quantite,
+			BigDecimal prix, Date dateEffective, int quantitePourBonus, int quantiteBonifiee) {
+		super();
+		this.idcp = idcp;
+		this.produit = produit;
+		this.conditionnement = conditionnement;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.dateEffective = dateEffective;
+		this.quantitePourBonus = quantitePourBonus;
+		this.quantiteBonifiee = quantiteBonifiee;
+	}
+
+
+
 	public ConditionnementProduit(int quantite, BigDecimal prix, Date dateEffective, int quantitePourBonus,
 			int quantiteBonifiee) {
 		super();
@@ -55,6 +73,14 @@ public class ConditionnementProduit {
 		this.quantiteBonifiee = quantiteBonifiee;
 	}
 	
+	
+	public long getIdcp() {
+		return idcp;
+	}
+
+	public void setIdcp(long idcp) {
+		this.idcp = idcp;
+	}
 	
 	public Produit getProduit() {
 		return produit;
