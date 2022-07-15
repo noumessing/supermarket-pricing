@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.supermarket.model.Produit;
@@ -18,35 +19,26 @@ public class ProduitDaoImpl implements ProduitDao {
 	private static final String UPDATE_PRODUITS_SQL = "update produit set nom_produit = ? where id = ?;";
 	private static final String SELECT_NB_PRODUIT = "select count(*) from produit;";
 
+	
 	public void insertProduit(Produit produit) {
-		Connection con = null;
-		con = ConnectionDao.createconnection();
-		try {
-			PreparedStatement preparedStatement = con.prepareStatement(INSERT_PRODUIT_SQL);
+		try (Connection con = ConnectionDao.createconnection();
+				PreparedStatement preparedStatement = con.prepareStatement(INSERT_PRODUIT_SQL)) {
+
 			preparedStatement.setString(1, produit.getNomProduit());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
-
 			e.printStackTrace();
-		} finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 	}
 
 	public Produit findProduit(long id) {
 
-		Connection con = null;
-		con = ConnectionDao.createconnection();
 		Produit produit = null;
 
-		try {
-			PreparedStatement preparedStatement = con.prepareStatement(SELECT_PRODUIT_BY_ID);
+		try (Connection con = ConnectionDao.createconnection();
+				PreparedStatement preparedStatement = con.prepareStatement(SELECT_PRODUIT_BY_ID);) {
 
 			preparedStatement.setLong(1, id);
 
@@ -59,25 +51,16 @@ public class ProduitDaoImpl implements ProduitDao {
 
 				produit = new Produit(id, nomProduit);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		} catch (SQLException e) {e.printStackTrace();
 		}
 
 		return produit;
 	}
 
 	public long nombreProduit() {
-		Connection con = null;
-		con = ConnectionDao.createconnection();
 		long nb = -1;
-		try {
-			PreparedStatement preparedStatement = con.prepareStatement(SELECT_NB_PRODUIT);
+		try (Connection con = ConnectionDao.createconnection();
+				PreparedStatement preparedStatement = con.prepareStatement(SELECT_NB_PRODUIT);) {
 
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -87,20 +70,28 @@ public class ProduitDaoImpl implements ProduitDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 
 		return nb;
 	}
 
 	public List<Produit> selectAllProduit() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Produit> produits = new ArrayList<>();
+
+		try (Connection con = ConnectionDao.createconnection();
+				PreparedStatement preparedStatement = con.prepareStatement(SELECT_ALL_PRODUITS);) {
+
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				long id = rs.getLong(1);
+				String nomProduit = rs.getString(2);
+				produits.add(new Produit(id, nomProduit));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return produits;
 	}
 
 	public boolean deleteProduit(long id) {
@@ -109,8 +100,17 @@ public class ProduitDaoImpl implements ProduitDao {
 	}
 
 	public boolean updateProduit(Produit produit) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		try (Connection con = ConnectionDao.createconnection();
+				PreparedStatement statement = con.prepareStatement(UPDATE_PRODUITS_SQL);) {
+
+			statement.setString(1, produit.getNomProduit());
+			statement.setLong(2, produit.getId());
+			result = statement.executeUpdate() > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

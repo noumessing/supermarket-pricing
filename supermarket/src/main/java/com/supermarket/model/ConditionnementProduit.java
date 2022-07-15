@@ -74,6 +74,19 @@ public class ConditionnementProduit {
 	}
 	
 	
+	public ConditionnementProduit(long idcp, int quantite, BigDecimal prix, Date dateEffective, int quantitePourBonus,
+			int quantiteBonifiee) {
+		super();
+		this.idcp = idcp;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.dateEffective = dateEffective;
+		this.quantitePourBonus = quantitePourBonus;
+		this.quantiteBonifiee = quantiteBonifiee;
+		
+	}
+	
+	
 	public long getIdcp() {
 		return idcp;
 	}
