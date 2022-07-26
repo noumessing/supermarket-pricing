@@ -139,6 +139,13 @@ public class ConditionnementProduit {
 		this.quantiteBonifiee = quantiteBonifiee;
 	}
 	
+	@Override
+	public String toString() {
+		return "ConditionnementProduit [produit=" + produit + ", conditionnement=" + conditionnement + ", quantite="
+				+ quantite + ", prix=" + prix + ", dateEffective=" + dateEffective + ", quantitePourBonus="
+				+ quantitePourBonus + ", quantiteBonifiee=" + quantiteBonifiee + "]";
+	}
 
+	
 
 }

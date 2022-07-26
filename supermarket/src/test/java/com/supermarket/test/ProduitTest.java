@@ -33,7 +33,8 @@ public class ProduitTest {
 	}
 
 	/*
-	 * @Test public void test() { // fail("Not yet implemented"); Produit expected =
+	 * @Test public void test() { // test ajout d'un produit
+	 *  Produit expected =
 	 * new Produit("Riz Sen1"); long nb_avant = produitMetier.nombreProduit();
 	 * produitMetier.saveProduit(expected); long nb_apres =
 	 * produitMetier.nombreProduit();

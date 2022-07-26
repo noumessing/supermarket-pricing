@@ -6,13 +6,13 @@ import com.supermarket.model.Produit;
 
 public interface ProduitMetier {
 	
-	public void saveProduit(Produit p);
+	 void saveProduit(Produit p);
 	
-	public List<Produit> listProduit();
+	 List<Produit> listProduit();
 	
-	public Produit findById(long id);
+	 Produit findById(long id);
 	
-	public long nombreProduit();
+	 long nombreProduit();
 	
-	public boolean modifierProduit(Produit p);
+	 boolean modifierProduit(Produit p);
 }

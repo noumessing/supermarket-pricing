@@ -64,17 +64,29 @@ public class ConditionnementProduitTest {
 		
 	}*/
 	 
-	 @Test
-		public void prixCommandeProduitTest() {  //Tester l'ajout d'une tarification
+	 @Test  // Evaluer le prix de la commande d'un produit
+		public void prixCommandeProduitTest() {  
 			Produit p = new Produit(14, "Yaourt 400gr");
 			Conditionnement c = new Conditionnement(3, "Pot");
-			BigDecimal prixCommande = condProduitMetier.prixCommandeProuit( p,  c, 14);
+			BigDecimal prixCommande = condProduitMetier.prixCommandeProuit( p,  c, 17);// on commande 17 pots de yaourt 400gr
 			
 			
-			BigDecimal expected = new BigDecimal(4800);
+			BigDecimal expected = new BigDecimal(6800);
 			expected = expected.setScale(2,BigDecimal.ROUND_HALF_EVEN);
 			Assert.assertEquals(expected, prixCommande);
 		}
 	 
-
+	 
+	 @Test  // tester la quatite de bonus à donner
+		public void quantiteBonusTest() {  
+			Produit p = new Produit(14, "Yaourt 400gr");
+			Conditionnement c = new Conditionnement(3, "Pot");
+			int quantiteDeBonus = condProduitMetier.getQuantiteTotalBonus( p,  c, BigDecimal.valueOf(17));// on commande 17 pots de yaourt 400gr
+			
+			
+			int  expected = 4;
+			
+			Assert.assertEquals(expected, quantiteDeBonus);
+		}
+	 
 }

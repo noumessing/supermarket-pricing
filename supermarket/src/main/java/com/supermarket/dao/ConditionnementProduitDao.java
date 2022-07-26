@@ -5,18 +5,18 @@ import java.util.List;
 import com.supermarket.model.ConditionnementProduit;
 
 public interface ConditionnementProduitDao {
-	
-	public void insertConditionnementProduit(ConditionnementProduit produit);
 
-	public ConditionnementProduit findConditionnementProduit(long idProduit,long idConditionnement);
+	void insertConditionnementProduit(ConditionnementProduit produit);
 
-	public List<ConditionnementProduit> selectAllConditionnementProduit();
-	
-	public List<ConditionnementProduit> selectConditionnementParProduit(long idProduit);
+	ConditionnementProduit findConditionnementProduit(long idProduit, long idConditionnement);
 
-	public boolean deleteConditionnementProduit(long id);
+	List<ConditionnementProduit> selectAllConditionnementProduit();
 
-	public boolean updateConditionnementProduit(ConditionnementProduit conditionnementProduit);
-	
-	public long nombreConditionnementProduit();
+	List<ConditionnementProduit> selectConditionnementParProduit(long idProduit);
+
+	boolean deleteConditionnementProduit(long id);
+
+	boolean updateConditionnementProduit(ConditionnementProduit conditionnementProduit);
+
+	long nombreConditionnementProduit();
 }

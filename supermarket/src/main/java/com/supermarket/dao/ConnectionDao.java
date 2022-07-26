@@ -6,7 +6,10 @@ import java.sql.SQLException;
 
 public class ConnectionDao {
 
-	
+	private static final String DB_URI = "jdbc:mysql://localhost:3306/market";
+	private static final String DB_USERNAME = "root";
+	private static final String DB_PASSWORD = "";
+	private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 	
 	public static Connection createconnection() {
 		  
@@ -14,16 +17,14 @@ public class ConnectionDao {
 		Connection con = null;
 		
 		 try {
-	            Class.forName("com.mysql.cj.jdbc.Driver");
-	            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/market", "root", "");
-	        } catch (SQLException e) {
-	           	            e.printStackTrace();
-	        } catch (ClassNotFoundException e) {
-	            
-	            e.printStackTrace();
-	        }
+	            Class.forName(DB_DRIVER);
+	            con = DriverManager.getConnection(DB_URI, DB_USERNAME, DB_PASSWORD);
+		 } catch (SQLException | ClassNotFoundException e) {
+
+				e.printStackTrace();
+			}
 		 
-		 System.out.println(" *** Connexion réussie");
+		// System.out.println(" *** Connexion rï¿½ussie");
 	        return con;
 		
 		

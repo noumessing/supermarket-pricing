@@ -6,14 +6,14 @@ import com.supermarket.model.Conditionnement;
 
 public interface ConditionnementMetier {
 
-	public void saveConditionnement(Conditionnement c);
+	 void saveConditionnement(Conditionnement c);
 
-	public List<Conditionnement> listConditionnement();
+	 List<Conditionnement> listConditionnement();
 
-	public Conditionnement findById(long id);
+	 Conditionnement findById(long id);
 
-	public long nombreConditionnement();
+	 long nombreConditionnement();
 
-	public boolean modifierConditionnement(Conditionnement c);
+	 boolean modifierConditionnement(Conditionnement c);
 
 }

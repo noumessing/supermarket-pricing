@@ -8,7 +8,7 @@ import com.supermarket.model.Conditionnement;
 
 public class ConditionnementMetierImpl implements ConditionnementMetier {
 	
-private ConditionnementDao conditionnementDao;
+private final ConditionnementDao conditionnementDao;
 	
 	
 	

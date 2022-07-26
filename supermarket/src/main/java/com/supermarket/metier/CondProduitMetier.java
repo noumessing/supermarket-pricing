@@ -9,18 +9,21 @@ import com.supermarket.model.Produit;
 
 public interface CondProduitMetier {
 	
-	public List<ConditionnementProduit> getListConditionnement(Produit p); // Liste des tarifs d'un produit avec le conditionnement
+	 List<ConditionnementProduit> getListConditionnement(Produit p); // Liste des tarifs d'un produit avec le conditionnement
 
-	 public void  addConditionnementProduit(ConditionnementProduit cp); // Ajouter la tarification d'un produit pour un conditionnement
+	  void  addConditionnementProduit(ConditionnementProduit cp); // Ajouter la tarification d'un produit pour un conditionnement
 		
-	 public BigDecimal prixUnitaire(Produit p,Conditionnement c);  // Prix unitaire d'un produit
+	  BigDecimal prixUnitaire(Produit p,Conditionnement c);  // Prix unitaire d'un produit
 	 
-	 public ConditionnementProduit tarifProduit(long idProduit,long idConditionnement); // tarification d'un produit donné suivant un conditionnement
+	  ConditionnementProduit tarifProduit(long idProduit,long idConditionnement); // tarification d'un produit donné suivant un conditionnement
 		
-	 public BigDecimal prixCommandeProuit(Produit p,Conditionnement c,int quantite); //
+	  BigDecimal prixCommandeProuit(Produit p,Conditionnement c,int quantite); //
 	 
-	 public boolean modifierTarifProduit(ConditionnementProduit conditionnementProduit);
+	  boolean modifierTarifProduit(ConditionnementProduit conditionnementProduit);
 	 
-	 public long nombreTarification();
+	  long nombreTarification();
 
+	  int getQuantiteDestockee(Produit p, Conditionnement c, int quantite);
+	  
+	  int getQuantiteTotalBonus (Produit p, Conditionnement c, BigDecimal quantite);
 }
